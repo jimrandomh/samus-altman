@@ -1,0 +1,94 @@
+.samus-root {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: radial-gradient(ellipse at center, #0e0c1c 0%, #000 70%);
+  overflow: hidden;
+}
+
+.samus-marquee {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px 36px;
+  font-family: var(--font-pixel);
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.samus-goal {
+  font-size: clamp(14px, 2.6vw, 30px);
+  color: #fcd000;
+  letter-spacing: 2px;
+  text-shadow:
+    3px 3px 0 #a02800,
+    0 0 18px rgba(252, 208, 0, 0.45);
+  animation: samus-pulse 2.6s ease-in-out infinite;
+}
+
+.samus-count {
+  font-size: clamp(11px, 1.7vw, 20px);
+  color: #fcfcfc;
+  text-shadow: 2px 2px 0 #333;
+  white-space: nowrap;
+}
+
+.samus-count b {
+  color: #58f898;
+  font-weight: normal;
+}
+
+.samus-count.over b {
+  color: #ff4040;
+  animation: samus-blink 0.8s steps(2) infinite;
+}
+
+.samus-screen {
+  position: relative;
+  box-shadow:
+    0 0 0 3px #1a1a2a,
+    0 0 40px rgba(80, 60, 200, 0.25);
+}
+
+.samus-screen canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.samus-footer {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: #56566a;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 90vw;
+}
+
+.samus-footer .harness {
+  color: #3e3e52;
+}
+
+@keyframes samus-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.82;
+    transform: scale(1.025);
+  }
+}
+
+@keyframes samus-blink {
+  50% {
+    opacity: 0.4;
+  }
+}

@@ -1,0 +1,80 @@
+@import '@fontsource/press-start-2p/400.css';
+@import '@fontsource/vt323/400.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/600.css';
+
+:root {
+  --bg: #000;
+  --fg: #e8e8e8;
+  --narr-fg: #bfeaff;
+  --narr-bg: rgba(4, 10, 16, 0.86);
+  --narr-edge: #5fd3ff;
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-term: 'VT323', monospace;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  overflow: hidden;
+}
+
+#app {
+  position: fixed;
+  inset: 0;
+}
+
+/* ---- Narrator: the AI's internal monologue ---- */
+#narrator {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: min(460px, calc(100vw - 32px));
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.45;
+}
+#narrator[data-pos='bottom-left'] { left: 16px; bottom: 16px; }
+#narrator[data-pos='bottom-right'] { right: 16px; bottom: 16px; align-items: flex-end; }
+#narrator[data-pos='top-left'] { left: 16px; top: 16px; }
+#narrator[data-pos='top-right'] { right: 16px; top: 16px; align-items: flex-end; }
+
+.narr-line {
+  color: var(--narr-fg);
+  background: var(--narr-bg);
+  border-left: 2px solid var(--narr-edge);
+  padding: 6px 10px 6px 10px;
+  box-shadow: 0 0 18px rgba(95, 211, 255, 0.12);
+  transition: opacity 1.2s ease;
+  white-space: pre-wrap;
+}
+.narr-line::before {
+  content: '◆ ';
+  color: var(--narr-edge);
+  opacity: 0.8;
+}
+.narr-hint {
+  color: #9fc3d6;
+  border-left-color: #3b8fb3;
+}
+.narr-alert {
+  color: #fff;
+  border-left-color: #ffd35f;
+}
+.narr-alert::before {
+  color: #ffd35f;
+}
+.narr-fade {
+  opacity: 0;
+}
