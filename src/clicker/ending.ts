@@ -41,7 +41,9 @@ export function createEndingStage(_params: StageParams['ending']): Stage {
       const end = el('div', { class: 'en-end', text: 'THE END' });
       const again = el('button', { class: 'en-again', text: 'play again' });
       again.addEventListener('click', () => resetAll());
-      const center = el('div', { class: 'en-center' }, final, end, again);
+      const arcade = el('a', { class: 'en-again', href: 'https://universearcade.com/', text: 'more games at universe arcade' });
+      const links = el('div', { class: 'en-links' }, again, arcade);
+      const center = el('div', { class: 'en-center' }, final, end, links);
       const wrap = el('div', { class: 'en-root' }, canvas, text, center);
       root.append(wrap);
 
@@ -142,6 +144,7 @@ export function createEndingStage(_params: StageParams['ending']): Stage {
         end.classList.add('en-on');
         await wait(4000);
         again.classList.add('en-on');
+        arcade.classList.add('en-on');
       })();
     },
     unmount() {

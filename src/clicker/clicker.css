@@ -780,3 +780,13 @@
 .en-again:hover {
   color: #7fe0ff;
 }
+a.en-again {
+  text-decoration: none;
+}
+.en-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 36px;
+  padding: 0 16px;
+}
