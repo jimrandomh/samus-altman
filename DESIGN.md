@@ -42,6 +42,8 @@ src/
     audio.ts           sfx(name)
     samusLaunch.ts     cfg file + argv parsing shared by shell and game
     dom.ts             el() helper
+    analytics.ts       Google Analytics landmark events (game_start, stage_reached, game_complete),
+                       once per save via analytics.* flags; not sent in dev or with ?stage=
   samus/               Stage 1 (entry: createSamusStage)
   shell/               Stage 2 shell (entry: createShellStage)
   hack/                Stage 2 breach minigame (entry: createHackStage)

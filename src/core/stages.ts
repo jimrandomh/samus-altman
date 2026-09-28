@@ -1,4 +1,5 @@
 // Stage manager: exactly one stage is mounted at a time.
+import { trackStage } from './analytics';
 import { setCurrentStage } from './state';
 import type { Stage, StageId, StageParams } from './types';
 
@@ -35,6 +36,7 @@ export function goTo<K extends StageId>(id: K, params?: StageParams[K]): void {
   appRoot.replaceChildren();
   appRoot.dataset.stage = id;
   setCurrentStage(id);
+  trackStage(id);
   currentId = id;
   current = factory((params ?? {}) as StageParams[K]);
   current.mount(appRoot);

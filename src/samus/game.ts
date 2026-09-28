@@ -1,4 +1,5 @@
 // Samus Altman: game state, update loop and flow (title, play, item-get, pause, death, crash, ending).
+import { trackGameStart } from '../core/analytics';
 import { sfx, isMuted, setMuted, type SfxName } from '../core/audio';
 import { createHints, type HintController } from '../core/hints';
 import { say } from '../core/narrator';
@@ -433,6 +434,7 @@ export class Game {
 
   private startGame(): void {
     this.play('success');
+    trackGameStart();
     this.save.started = true;
     this.setMode('play');
     this.persist();
